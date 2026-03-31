@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* =================================================================
+   PhysioXpert Design System - Theme Tokens
+   Importé par les apps consommatrices via:
+   import 'physio-xpert-ui/styles'
+   ================================================================= */
+
+@theme {
+  /* Primary colors - Cyan to Green gradient (PhysioXpert brand) */
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+
+  /* Accent colors - Cyan/Turquoise (PhysioXpert buttons) */
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-200: #a5f3fc;
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+  --color-accent-700: #0e7490;
+  --color-accent-800: #155e75;
+  --color-accent-900: #164e63;
+
+  /* Semantic colors */
+  --color-background: #f0fdf4;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-border: #d1fae5;
+  --color-secondary: #0891b2;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #22d3ee;
+  --color-muted: #f0fdf4;
+  --color-muted-foreground: #64748b;
+  --color-border: #e5e7eb;
+  --color-input: #ffffff;
+  --color-ring: #10b981;
+  --color-primary-hover: #059669;
+  --color-primary-light: #d1fae5;
+
+  /* Custom shadows */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+:root {
+  --background: #f0fdf4;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-border: #d1fae5;
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --primary-light: #d1fae5;
+  --secondary: #0891b2;
+  --accent: #06b6d4;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #22d3ee;
+  --muted: #f0fdf4;
+  --muted-foreground: #64748b;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --ring: #10b981;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #0891b2 0%, #059669 100%);
+}
+
+/* =================================================================
+   BRAND UTILITIES
+   ================================================================= */
+
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+}
+
+.bg-gradient-brand-hover:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #059669 100%);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+}
+
+.bg-gradient-primary:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #059669 100%);
+}
+
+/* Status colors */
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+.text-info { color: var(--info); }
+
+.bg-success-light { background-color: #d1fae5; }
+.bg-warning-light { background-color: #fef3c7; }
+.bg-danger-light { background-color: #fee2e2; }
+.bg-info-light { background-color: #cffafe; }
+
+/* VOR colors (Vert/Orange/Rouge system) */
+.text-vor-vert { color: #10b981; }
+.text-vor-orange { color: #f59e0b; }
+.text-vor-rouge { color: #ef4444; }
+
+.bg-vor-vert { background-color: #10b981; }
+.bg-vor-orange { background-color: #f59e0b; }
+.bg-vor-rouge { background-color: #ef4444; }
+
+.bg-vor-vert-light { background-color: #d1fae5; }
+.bg-vor-orange-light { background-color: #fef3c7; }
+.bg-vor-rouge-light { background-color: #fee2e2; }
+
+/* =================================================================
+   ACCESSIBILITY
+   ================================================================= */
+
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 0;
+  border-color: #3b82f6;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-spin {
+    animation: none;
+  }
+}
+
+/* =================================================================
+   ANIMATIONS
+   ================================================================= */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+.animate-scaleIn { animation: scaleIn 0.2s ease-out; }
+.animate-slide-up { animation: slide-up 0.3s ease-out; }
+.animate-slide-down { animation: slide-down 0.3s ease-out; }
+.animate-shimmer { animation: shimmer 1.5s infinite linear; }
