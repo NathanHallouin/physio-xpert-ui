@@ -85,39 +85,28 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
       onDismissMotivation?.()
     }
 
-    const getCardStyle = () => {
-      if (dailyQuotaReached) {
-        return {
-          gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
-          bgLight: 'from-emerald-50 to-teal-50',
-          border: 'border-emerald-200',
-          text: 'text-emerald-900',
-          textLight: 'text-emerald-700',
-          progressBg: 'bg-emerald-100',
-          progressBar: 'from-emerald-400 to-teal-500',
-        }
-      }
-      return {
-        gradient: 'from-blue-500 via-blue-600 to-indigo-600',
-        bgLight: 'from-blue-50 to-indigo-50',
-        border: 'border-blue-200',
-        text: 'text-blue-900',
-        textLight: 'text-blue-700',
-        progressBg: 'bg-blue-100',
-        progressBar: 'from-blue-400 to-indigo-500',
-      }
-    }
-
-    const style = getCardStyle()
+    // Tailwind v4: use complete static class strings to avoid purging
+    const isCompleted = dailyQuotaReached
 
     return (
       <div
         ref={ref}
-        className={cn(`bg-gradient-to-br ${style.bgLight} rounded-lg border ${style.border} overflow-hidden shadow-sm`, className)}
+        className={cn(
+          'bg-gradient-to-br rounded-lg border overflow-hidden shadow-sm',
+          isCompleted
+            ? 'from-emerald-50 to-teal-50 border-emerald-200'
+            : 'from-blue-50 to-indigo-50 border-blue-200',
+          className
+        )}
         {...props}
       >
         {/* Header avec gradient */}
-        <div className={`bg-gradient-to-r ${style.gradient} px-5 py-4`}>
+        <div className={cn(
+          'bg-gradient-to-r px-5 py-4',
+          isCompleted
+            ? 'from-emerald-500 via-teal-500 to-cyan-500'
+            : 'from-blue-500 via-blue-600 to-indigo-600'
+        )}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {dailyQuotaReached ? (
@@ -167,13 +156,13 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
             <div className="flex items-start gap-3 p-3 bg-white/60 rounded-lg border border-white/80">
               <div className="text-xl flex-shrink-0">{motivationMessage.emoji}</div>
               <div className="flex-1 min-w-0">
-                <p className={cn('text-sm font-medium', style.text)}>
+                <p className={cn('text-sm font-medium', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>
                   {motivationMessage.message}
                 </p>
               </div>
               <button
                 onClick={handleDismissMotivation}
-                className={cn('p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0', style.textLight)}
+                className={cn('p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0', isCompleted ? 'text-emerald-700' : 'text-blue-700')}
                 aria-label="Fermer"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -187,13 +176,13 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
           <div>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Clock className={cn('w-4 h-4', style.textLight)} />
-                <span className={cn('text-sm font-medium', style.text)}>Objectif du jour</span>
+                <Clock className={cn('w-4 h-4', isCompleted ? 'text-emerald-700' : 'text-blue-700')} />
+                <span className={cn('text-sm font-medium', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>Objectif du jour</span>
               </div>
               {onOpenSettings && (
                 <button
                   onClick={onOpenSettings}
-                  className={cn('p-1.5 hover:bg-white/50 rounded-lg transition-colors', style.textLight)}
+                  className={cn('p-1.5 hover:bg-white/50 rounded-lg transition-colors', isCompleted ? 'text-emerald-700' : 'text-blue-700')}
                   aria-label="Reglages"
                 >
                   <Settings className="w-4 h-4" />
@@ -201,20 +190,20 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
               )}
             </div>
 
-            <div className={cn('h-3 rounded-full overflow-hidden', style.progressBg)}>
+            <div className={cn('h-3 rounded-full overflow-hidden', isCompleted ? 'bg-emerald-100' : 'bg-blue-100')}>
               <div
-                className={cn('h-full bg-gradient-to-r rounded-full transition-all duration-500', style.progressBar)}
+                className={cn('h-full bg-gradient-to-r rounded-full transition-all duration-500', isCompleted ? 'from-emerald-400 to-teal-500' : 'from-blue-400 to-indigo-500')}
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
 
             <div className="flex items-center justify-between mt-2">
-              <span className={cn('text-sm', style.textLight)}>
+              <span className={cn('text-sm', isCompleted ? 'text-emerald-700' : 'text-blue-700')}>
                 {todaySessionsCount > 0
                   ? `${todaySessionsCount} seance${todaySessionsCount > 1 ? 's' : ''} aujourd'hui`
                   : 'Aucune seance'}
               </span>
-              <span className={cn('text-sm font-bold', style.text)}>
+              <span className={cn('text-sm font-bold', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>
                 {todayMinutesCompleted}/{dailyAvailabilityMinutes} min
               </span>
             </div>
@@ -240,7 +229,9 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
               onClick={onStartSession}
               className={cn(
                 'w-full flex items-center justify-center gap-3 px-5 py-4 bg-gradient-to-r hover:opacity-90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group',
-                style.gradient
+                isCompleted
+                  ? 'from-emerald-500 via-teal-500 to-cyan-500'
+                  : 'from-blue-500 via-blue-600 to-indigo-600'
               )}
             >
               <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />

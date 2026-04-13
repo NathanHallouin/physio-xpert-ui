@@ -10412,30 +10412,14 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 }), Ha = i(function({ dailyAvailabilityMinutes: e, todayMinutesCompleted: t, todayMinutesRemaining: n, todaySessionsCount: r, dailyQuotaReached: i, currentStreak: a, canStartSession: o, motivationMessage: s, onStartSession: c, onDismissMotivation: l, onOpenSettings: u, children: d, className: f, ...p }, h) {
 	let [v, y] = m(!0), b = Math.min(100, t / e * 100), x = () => {
 		y(!1), l?.();
-	}, S = i ? {
-		gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-		bgLight: "from-emerald-50 to-teal-50",
-		border: "border-emerald-200",
-		text: "text-emerald-900",
-		textLight: "text-emerald-700",
-		progressBg: "bg-emerald-100",
-		progressBar: "from-emerald-400 to-teal-500"
-	} : {
-		gradient: "from-blue-500 via-blue-600 to-indigo-600",
-		bgLight: "from-blue-50 to-indigo-50",
-		border: "border-blue-200",
-		text: "text-blue-900",
-		textLight: "text-blue-700",
-		progressBg: "bg-blue-100",
-		progressBar: "from-blue-400 to-indigo-500"
-	};
+	}, S = i;
 	return /* @__PURE__ */ _("div", {
 		ref: h,
-		className: J(`bg-gradient-to-br ${S.bgLight} rounded-lg border ${S.border} overflow-hidden shadow-sm`, f),
+		className: J("bg-gradient-to-br rounded-lg border overflow-hidden shadow-sm", S ? "from-emerald-50 to-teal-50 border-emerald-200" : "from-blue-50 to-indigo-50 border-blue-200", f),
 		...p,
 		children: [
 			/* @__PURE__ */ g("div", {
-				className: `bg-gradient-to-r ${S.gradient} px-5 py-4`,
+				className: J("bg-gradient-to-r px-5 py-4", S ? "from-emerald-500 via-teal-500 to-cyan-500" : "from-blue-500 via-blue-600 to-indigo-600"),
 				children: /* @__PURE__ */ _("div", {
 					className: "flex items-center justify-between",
 					children: [/* @__PURE__ */ _("div", {
@@ -10478,13 +10462,13 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 							/* @__PURE__ */ g("div", {
 								className: "flex-1 min-w-0",
 								children: /* @__PURE__ */ g("p", {
-									className: J("text-sm font-medium", S.text),
+									className: J("text-sm font-medium", S ? "text-emerald-900" : "text-blue-900"),
 									children: s.message
 								})
 							}),
 							/* @__PURE__ */ g("button", {
 								onClick: x,
-								className: J("p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0", S.textLight),
+								className: J("p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0", S ? "text-emerald-700" : "text-blue-700"),
 								"aria-label": "Fermer",
 								children: /* @__PURE__ */ g("svg", {
 									className: "w-4 h-4",
@@ -10506,31 +10490,31 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 							className: "flex items-center justify-between mb-2",
 							children: [/* @__PURE__ */ _("div", {
 								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ g(vn, { className: J("w-4 h-4", S.textLight) }), /* @__PURE__ */ g("span", {
-									className: J("text-sm font-medium", S.text),
+								children: [/* @__PURE__ */ g(vn, { className: J("w-4 h-4", S ? "text-emerald-700" : "text-blue-700") }), /* @__PURE__ */ g("span", {
+									className: J("text-sm font-medium", S ? "text-emerald-900" : "text-blue-900"),
 									children: "Objectif du jour"
 								})]
 							}), u && /* @__PURE__ */ g("button", {
 								onClick: u,
-								className: J("p-1.5 hover:bg-white/50 rounded-lg transition-colors", S.textLight),
+								className: J("p-1.5 hover:bg-white/50 rounded-lg transition-colors", S ? "text-emerald-700" : "text-blue-700"),
 								"aria-label": "Reglages",
 								children: /* @__PURE__ */ g(Jn, { className: "w-4 h-4" })
 							})]
 						}),
 						/* @__PURE__ */ g("div", {
-							className: J("h-3 rounded-full overflow-hidden", S.progressBg),
+							className: J("h-3 rounded-full overflow-hidden", S ? "bg-emerald-100" : "bg-blue-100"),
 							children: /* @__PURE__ */ g("div", {
-								className: J("h-full bg-gradient-to-r rounded-full transition-all duration-500", S.progressBar),
+								className: J("h-full bg-gradient-to-r rounded-full transition-all duration-500", S ? "from-emerald-400 to-teal-500" : "from-blue-400 to-indigo-500"),
 								style: { width: `${b}%` }
 							})
 						}),
 						/* @__PURE__ */ _("div", {
 							className: "flex items-center justify-between mt-2",
 							children: [/* @__PURE__ */ g("span", {
-								className: J("text-sm", S.textLight),
+								className: J("text-sm", S ? "text-emerald-700" : "text-blue-700"),
 								children: r > 0 ? `${r} seance${r > 1 ? "s" : ""} aujourd'hui` : "Aucune seance"
 							}), /* @__PURE__ */ _("span", {
-								className: J("text-sm font-bold", S.text),
+								className: J("text-sm font-bold", S ? "text-emerald-900" : "text-blue-900"),
 								children: [
 									t,
 									"/",
@@ -10557,7 +10541,7 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 						})]
 					}) : o && c ? /* @__PURE__ */ _("button", {
 						onClick: c,
-						className: J("w-full flex items-center justify-center gap-3 px-5 py-4 bg-gradient-to-r hover:opacity-90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group", S.gradient),
+						className: J("w-full flex items-center justify-center gap-3 px-5 py-4 bg-gradient-to-r hover:opacity-90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group", S ? "from-emerald-500 via-teal-500 to-cyan-500" : "from-blue-500 via-blue-600 to-indigo-600"),
 						children: [
 							/* @__PURE__ */ g(Vn, { className: "w-5 h-5 group-hover:scale-110 transition-transform" }),
 							/* @__PURE__ */ g("span", { children: t > 0 ? "Continuer ma seance" : "Faire mes exercices" }),
