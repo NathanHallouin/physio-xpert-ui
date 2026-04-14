@@ -10415,34 +10415,35 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 	}, S = i;
 	return /* @__PURE__ */ _("div", {
 		ref: h,
-		className: J("bg-gradient-to-br rounded-lg border overflow-hidden shadow-sm", S ? "from-emerald-50 to-teal-50 border-emerald-200" : "from-blue-50 to-indigo-50 border-blue-200", f),
+		className: J("rounded-2xl border overflow-hidden", S ? "bg-[#f0f7f4] border-[#bbdece]" : "bg-white border-[#e8e6de]", f),
+		style: { boxShadow: "0 1px 3px rgba(26,26,24,0.05), 0 1px 2px rgba(26,26,24,0.03)" },
 		...p,
 		children: [
 			/* @__PURE__ */ g("div", {
-				className: J("bg-gradient-to-r px-5 py-4", S ? "from-emerald-500 via-teal-500 to-cyan-500" : "from-blue-500 via-blue-600 to-indigo-600"),
+				className: J("px-5 py-4", S ? "bg-[#2a7554]" : "bg-[#3a9169]"),
 				children: /* @__PURE__ */ _("div", {
 					className: "flex items-center justify-between",
 					children: [/* @__PURE__ */ _("div", {
 						className: "flex items-center gap-3",
 						children: [i ? /* @__PURE__ */ g("div", {
-							className: "w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center",
+							className: "w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center",
 							children: /* @__PURE__ */ g(sr, { className: "w-5 h-5 text-white" })
 						}) : t > 0 ? /* @__PURE__ */ g("div", {
-							className: "w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center",
+							className: "w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center",
 							children: /* @__PURE__ */ g(tr, { className: "w-5 h-5 text-white" })
 						}) : /* @__PURE__ */ g("div", {
-							className: "w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center",
+							className: "w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center",
 							children: /* @__PURE__ */ g($n, { className: "w-5 h-5 text-white" })
 						}), /* @__PURE__ */ _("div", { children: [/* @__PURE__ */ g("h2", {
-							className: "text-lg font-bold text-white",
-							children: i ? "Objectif atteint !" : t > 0 ? "Continuez votre effort !" : "Votre seance du jour"
+							className: "text-base font-semibold text-white",
+							children: i ? "Objectif atteint !" : t > 0 ? "Continuez votre effort" : "Votre seance du jour"
 						}), /* @__PURE__ */ g("p", {
-							className: "text-sm text-white/80",
-							children: i ? "Felicitations pour cette journee reussie" : t > 0 ? `Encore ${n} min pour l'objectif` : "Pret a commencer votre reeducation ?"
+							className: "text-sm text-white/75",
+							children: i ? "Felicitations pour cette journee" : t > 0 ? `Encore ${n} min pour l'objectif` : "Pret a commencer votre reeducation ?"
 						})] })]
 					}), a > 0 && /* @__PURE__ */ _("div", {
-						className: "flex items-center gap-1.5 px-3 py-1.5 bg-white/20 rounded-full",
-						children: [/* @__PURE__ */ g(Tn, { className: "w-4 h-4 text-orange-300" }), /* @__PURE__ */ _("span", {
+						className: "flex items-center gap-1.5 px-2.5 py-1 bg-white/15 rounded-lg",
+						children: [/* @__PURE__ */ g(Tn, { className: "w-3.5 h-3.5 text-amber-300" }), /* @__PURE__ */ _("span", {
 							className: "text-sm font-semibold text-white",
 							children: [a, "j"]
 						})]
@@ -10453,22 +10454,22 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 				className: "p-5 space-y-4",
 				children: [
 					s && v && !i && /* @__PURE__ */ _("div", {
-						className: "flex items-start gap-3 p-3 bg-white/60 rounded-lg border border-white/80",
+						className: J("flex items-start gap-3 p-3 rounded-xl border", S ? "bg-[#dceee5]/50 border-[#bbdece]" : "bg-[#f5f4ef] border-[#e8e6de]"),
 						children: [
 							/* @__PURE__ */ g("div", {
-								className: "text-xl flex-shrink-0",
+								className: "text-lg flex-shrink-0 mt-0.5",
 								children: s.emoji
 							}),
 							/* @__PURE__ */ g("div", {
 								className: "flex-1 min-w-0",
 								children: /* @__PURE__ */ g("p", {
-									className: J("text-sm font-medium", S ? "text-emerald-900" : "text-blue-900"),
+									className: "text-sm text-[#504d45]",
 									children: s.message
 								})
 							}),
 							/* @__PURE__ */ g("button", {
 								onClick: x,
-								className: J("p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0", S ? "text-emerald-700" : "text-blue-700"),
+								className: "p-1 hover:bg-black/5 rounded-lg transition-colors flex-shrink-0 text-[#9f9a8c]",
 								"aria-label": "Fermer",
 								children: /* @__PURE__ */ g("svg", {
 									className: "w-4 h-4",
@@ -10478,7 +10479,7 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 									children: /* @__PURE__ */ g("path", {
 										strokeLinecap: "round",
 										strokeLinejoin: "round",
-										strokeWidth: 2,
+										strokeWidth: 1.5,
 										d: "M6 18L18 6M6 6l12 12"
 									})
 								})
@@ -10490,31 +10491,31 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 							className: "flex items-center justify-between mb-2",
 							children: [/* @__PURE__ */ _("div", {
 								className: "flex items-center gap-2",
-								children: [/* @__PURE__ */ g(vn, { className: J("w-4 h-4", S ? "text-emerald-700" : "text-blue-700") }), /* @__PURE__ */ g("span", {
-									className: J("text-sm font-medium", S ? "text-emerald-900" : "text-blue-900"),
+								children: [/* @__PURE__ */ g(vn, { className: "w-4 h-4 text-[#726d60]" }), /* @__PURE__ */ g("span", {
+									className: "text-sm font-medium text-[#504d45]",
 									children: "Objectif du jour"
 								})]
 							}), u && /* @__PURE__ */ g("button", {
 								onClick: u,
-								className: J("p-1.5 hover:bg-white/50 rounded-lg transition-colors", S ? "text-emerald-700" : "text-blue-700"),
+								className: "p-1.5 hover:bg-black/5 rounded-lg transition-colors text-[#9f9a8c]",
 								"aria-label": "Reglages",
 								children: /* @__PURE__ */ g(Jn, { className: "w-4 h-4" })
 							})]
 						}),
 						/* @__PURE__ */ g("div", {
-							className: J("h-3 rounded-full overflow-hidden", S ? "bg-emerald-100" : "bg-blue-100"),
+							className: "h-2 rounded-full overflow-hidden bg-[#e8e6de]",
 							children: /* @__PURE__ */ g("div", {
-								className: J("h-full bg-gradient-to-r rounded-full transition-all duration-500", S ? "from-emerald-400 to-teal-500" : "from-blue-400 to-indigo-500"),
+								className: J("h-full rounded-full transition-all duration-500", "bg-[#3a9169]"),
 								style: { width: `${b}%` }
 							})
 						}),
 						/* @__PURE__ */ _("div", {
 							className: "flex items-center justify-between mt-2",
 							children: [/* @__PURE__ */ g("span", {
-								className: J("text-sm", S ? "text-emerald-700" : "text-blue-700"),
+								className: "text-sm text-[#726d60]",
 								children: r > 0 ? `${r} seance${r > 1 ? "s" : ""} aujourd'hui` : "Aucune seance"
 							}), /* @__PURE__ */ _("span", {
-								className: J("text-sm font-bold", S ? "text-emerald-900" : "text-blue-900"),
+								className: "text-sm font-bold text-[#504d45]",
 								children: [
 									t,
 									"/",
@@ -10525,27 +10526,28 @@ var Va = i(function({ programs: e, selectedProgram: t, onSelectProgram: n, class
 						})
 					] }),
 					i ? /* @__PURE__ */ _("div", {
-						className: "flex items-center gap-3 p-4 bg-white/60 rounded-lg",
+						className: "flex items-center gap-3 p-4 bg-[#f0f7f4] rounded-xl border border-[#bbdece]",
 						children: [/* @__PURE__ */ g("div", {
-							className: "w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0",
-							children: /* @__PURE__ */ g(hn, { className: "w-6 h-6 text-white" })
+							className: "w-11 h-11 bg-[#3a9169] rounded-full flex items-center justify-center flex-shrink-0",
+							children: /* @__PURE__ */ g(hn, { className: "w-5 h-5 text-white" })
 						}), /* @__PURE__ */ _("div", {
 							className: "flex-1",
 							children: [/* @__PURE__ */ g("p", {
-								className: "font-semibold text-emerald-800",
+								className: "font-semibold text-[#1f4b38]",
 								children: "Bravo !"
 							}), /* @__PURE__ */ g("p", {
-								className: "text-sm text-emerald-600",
+								className: "text-sm text-[#3a9169]",
 								children: a > 1 ? `${a} jours consecutifs d'exercices` : "Vous avez atteint votre objectif"
 							})]
 						})]
 					}) : o && c ? /* @__PURE__ */ _("button", {
 						onClick: c,
-						className: J("w-full flex items-center justify-center gap-3 px-5 py-4 bg-gradient-to-r hover:opacity-90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group", S ? "from-emerald-500 via-teal-500 to-cyan-500" : "from-blue-500 via-blue-600 to-indigo-600"),
+						className: "w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-[#3a9169] hover:bg-[#2a7554] text-white font-medium rounded-xl transition-colors group",
+						style: { boxShadow: "0 1px 3px rgba(26,26,24,0.1)" },
 						children: [
 							/* @__PURE__ */ g(Vn, { className: "w-5 h-5 group-hover:scale-110 transition-transform" }),
 							/* @__PURE__ */ g("span", { children: t > 0 ? "Continuer ma seance" : "Faire mes exercices" }),
-							/* @__PURE__ */ g(pn, { className: "w-5 h-5 group-hover:translate-x-1 transition-transform" })
+							/* @__PURE__ */ g(pn, { className: "w-5 h-5 group-hover:translate-x-0.5 transition-transform" })
 						]
 					}) : null
 				]

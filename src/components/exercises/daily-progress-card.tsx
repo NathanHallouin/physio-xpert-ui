@@ -1,5 +1,5 @@
 /**
- * DailyProgressCard - Carte unifiee de progression quotidienne
+ * DailyProgressCard - Carte de progression quotidienne
  *
  * Combine en une seule carte :
  * - Message de motivation contextuel
@@ -85,54 +85,54 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
       onDismissMotivation?.()
     }
 
-    // Tailwind v4: use complete static class strings to avoid purging
     const isCompleted = dailyQuotaReached
 
     return (
       <div
         ref={ref}
         className={cn(
-          'bg-gradient-to-br rounded-lg border overflow-hidden shadow-sm',
+          'rounded-2xl border overflow-hidden',
           isCompleted
-            ? 'from-emerald-50 to-teal-50 border-emerald-200'
-            : 'from-blue-50 to-indigo-50 border-blue-200',
+            ? 'bg-[#f0f7f4] border-[#bbdece]'
+            : 'bg-white border-[#e8e6de]',
           className
         )}
+        style={{ boxShadow: '0 1px 3px rgba(26,26,24,0.05), 0 1px 2px rgba(26,26,24,0.03)' }}
         {...props}
       >
-        {/* Header avec gradient */}
+        {/* Header */}
         <div className={cn(
-          'bg-gradient-to-r px-5 py-4',
+          'px-5 py-4',
           isCompleted
-            ? 'from-emerald-500 via-teal-500 to-cyan-500'
-            : 'from-blue-500 via-blue-600 to-indigo-600'
+            ? 'bg-[#2a7554]'
+            : 'bg-[#3a9169]'
         )}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {dailyQuotaReached ? (
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-white" />
                 </div>
               ) : todayMinutesCompleted > 0 ? (
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center">
                   <Target className="w-5 h-5 text-white" />
                 </div>
               ) : (
-                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
               )}
               <div>
-                <h2 className="text-lg font-bold text-white">
+                <h2 className="text-base font-semibold text-white">
                   {dailyQuotaReached
                     ? 'Objectif atteint !'
                     : todayMinutesCompleted > 0
-                      ? 'Continuez votre effort !'
+                      ? 'Continuez votre effort'
                       : 'Votre seance du jour'}
                 </h2>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-white/75">
                   {dailyQuotaReached
-                    ? 'Felicitations pour cette journee reussie'
+                    ? 'Felicitations pour cette journee'
                     : todayMinutesCompleted > 0
                       ? `Encore ${todayMinutesRemaining} min pour l'objectif`
                       : 'Pret a commencer votre reeducation ?'}
@@ -141,48 +141,53 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
             </div>
 
             {currentStreak > 0 && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/20 rounded-full">
-                <Flame className="w-4 h-4 text-orange-300" />
+              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/15 rounded-lg">
+                <Flame className="w-3.5 h-3.5 text-amber-300" />
                 <span className="text-sm font-semibold text-white">{currentStreak}j</span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Contenu principal */}
+        {/* Content */}
         <div className="p-5 space-y-4">
-          {/* Message de motivation contextuel */}
+          {/* Motivation message */}
           {motivationMessage && showMotivation && !dailyQuotaReached && (
-            <div className="flex items-start gap-3 p-3 bg-white/60 rounded-lg border border-white/80">
-              <div className="text-xl flex-shrink-0">{motivationMessage.emoji}</div>
+            <div className={cn(
+              'flex items-start gap-3 p-3 rounded-xl border',
+              isCompleted
+                ? 'bg-[#dceee5]/50 border-[#bbdece]'
+                : 'bg-[#f5f4ef] border-[#e8e6de]'
+            )}>
+              <div className="text-lg flex-shrink-0 mt-0.5">{motivationMessage.emoji}</div>
               <div className="flex-1 min-w-0">
-                <p className={cn('text-sm font-medium', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>
+                <p className="text-sm text-[#504d45]">
                   {motivationMessage.message}
                 </p>
               </div>
               <button
                 onClick={handleDismissMotivation}
-                className={cn('p-1 hover:bg-white/50 rounded transition-colors flex-shrink-0', isCompleted ? 'text-emerald-700' : 'text-blue-700')}
+                className="p-1 hover:bg-black/5 rounded-lg transition-colors flex-shrink-0 text-[#9f9a8c]"
                 aria-label="Fermer"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
           )}
 
-          {/* Barre de progression */}
+          {/* Progress bar */}
           <div>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Clock className={cn('w-4 h-4', isCompleted ? 'text-emerald-700' : 'text-blue-700')} />
-                <span className={cn('text-sm font-medium', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>Objectif du jour</span>
+                <Clock className="w-4 h-4 text-[#726d60]" />
+                <span className="text-sm font-medium text-[#504d45]">Objectif du jour</span>
               </div>
               {onOpenSettings && (
                 <button
                   onClick={onOpenSettings}
-                  className={cn('p-1.5 hover:bg-white/50 rounded-lg transition-colors', isCompleted ? 'text-emerald-700' : 'text-blue-700')}
+                  className="p-1.5 hover:bg-black/5 rounded-lg transition-colors text-[#9f9a8c]"
                   aria-label="Reglages"
                 >
                   <Settings className="w-4 h-4" />
@@ -190,34 +195,37 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
               )}
             </div>
 
-            <div className={cn('h-3 rounded-full overflow-hidden', isCompleted ? 'bg-emerald-100' : 'bg-blue-100')}>
+            <div className="h-2 rounded-full overflow-hidden bg-[#e8e6de]">
               <div
-                className={cn('h-full bg-gradient-to-r rounded-full transition-all duration-500', isCompleted ? 'from-emerald-400 to-teal-500' : 'from-blue-400 to-indigo-500')}
+                className={cn(
+                  'h-full rounded-full transition-all duration-500',
+                  isCompleted ? 'bg-[#3a9169]' : 'bg-[#3a9169]'
+                )}
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
 
             <div className="flex items-center justify-between mt-2">
-              <span className={cn('text-sm', isCompleted ? 'text-emerald-700' : 'text-blue-700')}>
+              <span className="text-sm text-[#726d60]">
                 {todaySessionsCount > 0
                   ? `${todaySessionsCount} seance${todaySessionsCount > 1 ? 's' : ''} aujourd'hui`
                   : 'Aucune seance'}
               </span>
-              <span className={cn('text-sm font-bold', isCompleted ? 'text-emerald-900' : 'text-blue-900')}>
+              <span className="text-sm font-bold text-[#504d45]">
                 {todayMinutesCompleted}/{dailyAvailabilityMinutes} min
               </span>
             </div>
           </div>
 
-          {/* CTA ou message de succes */}
+          {/* CTA or success */}
           {dailyQuotaReached ? (
-            <div className="flex items-center gap-3 p-4 bg-white/60 rounded-lg">
-              <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-3 p-4 bg-[#f0f7f4] rounded-xl border border-[#bbdece]">
+              <div className="w-11 h-11 bg-[#3a9169] rounded-full flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-5 h-5 text-white" />
               </div>
               <div className="flex-1">
-                <p className="font-semibold text-emerald-800">Bravo !</p>
-                <p className="text-sm text-emerald-600">
+                <p className="font-semibold text-[#1f4b38]">Bravo !</p>
+                <p className="text-sm text-[#3a9169]">
                   {currentStreak > 1
                     ? `${currentStreak} jours consecutifs d'exercices`
                     : 'Vous avez atteint votre objectif'}
@@ -227,18 +235,14 @@ export const DailyProgressCard = forwardRef<HTMLDivElement, DailyProgressCardPro
           ) : canStartSession && onStartSession ? (
             <button
               onClick={onStartSession}
-              className={cn(
-                'w-full flex items-center justify-center gap-3 px-5 py-4 bg-gradient-to-r hover:opacity-90 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group',
-                isCompleted
-                  ? 'from-emerald-500 via-teal-500 to-cyan-500'
-                  : 'from-blue-500 via-blue-600 to-indigo-600'
-              )}
+              className="w-full flex items-center justify-center gap-3 px-5 py-3.5 bg-[#3a9169] hover:bg-[#2a7554] text-white font-medium rounded-xl transition-colors group"
+              style={{ boxShadow: '0 1px 3px rgba(26,26,24,0.1)' }}
             >
               <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>
                 {todayMinutesCompleted > 0 ? 'Continuer ma seance' : 'Faire mes exercices'}
               </span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           ) : null}
         </div>
