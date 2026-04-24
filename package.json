@@ -1,6 +1,6 @@
 {
   "name": "physio-xpert-ui",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "type": "module",
   "private": true,
   "description": "Design system et bibliothèque de composants React pour PhysioXpert",
