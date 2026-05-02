@@ -9747,7 +9747,7 @@ var Ea = i(function({ messages: e, alerts: t, alertsOnly: n = !1, compact: r = !
 	armchair: Xt,
 	box: ln,
 	square: er
-}, Aa = i(function({ selectedAccessories: e, onChange: t, availableAccessories: n, disabled: r = !1, compact: i = !1, label: a = "Materiel a disposition", className: o, ...s }, c) {
+}, Aa = i(function({ selectedAccessories: e, onChange: t, availableAccessories: n = [], disabled: r = !1, compact: i = !1, label: a = "Materiel a disposition", className: o, ...s }, c) {
 	let l = (n) => {
 		if (!r) if (e.includes(n)) {
 			if (n === "aucun" && e.length === 1) return;
@@ -9857,7 +9857,7 @@ var Ea = i(function({ messages: e, alerts: t, alertsOnly: n = !1, compact: r = !
 	bed: on,
 	dog: Sn,
 	"person-standing": Bn
-}, Ma = i(function({ selectedPositions: e, onChange: t, availablePositions: n, disabled: r = !1, compact: i = !1, label: a = "Positions possibles", basicPositionKeys: o = ["debout", "assis"], className: s, ...c }, l) {
+}, Ma = i(function({ selectedPositions: e, onChange: t, availablePositions: n = [], disabled: r = !1, compact: i = !1, label: a = "Positions possibles", basicPositionKeys: o = ["debout", "assis"], className: s, ...c }, l) {
 	let u = (n) => {
 		if (!r) if (e.includes(n)) {
 			if (e.length === 1) return;

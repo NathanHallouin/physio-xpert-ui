@@ -63,7 +63,7 @@ export const AccessorySelector = forwardRef<HTMLDivElement, AccessorySelectorPro
     {
       selectedAccessories,
       onChange,
-      availableAccessories,
+      availableAccessories = [],
       disabled = false,
       compact = false,
       label = 'Materiel a disposition',

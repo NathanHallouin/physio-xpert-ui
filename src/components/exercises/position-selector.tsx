@@ -56,7 +56,7 @@ export const PositionSelector = forwardRef<HTMLDivElement, PositionSelectorProps
     {
       selectedPositions,
       onChange,
-      availablePositions,
+      availablePositions = [],
       disabled = false,
       compact = false,
       label = 'Positions possibles',
